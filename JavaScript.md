@@ -156,3 +156,68 @@ Alternatively, you can link the JavaScript file in the `<head>` of your HTML doc
   <script src="js-file.js" defer></script>
 </head>
 ```
+
+**Events**
+
+Events allow to manipulate the DOM dynamically, or on demand!
+
+**Event Methods**
+
+- **Method 1** 
+
+  ```html
+  <button onclick="alert('Hello World')">Click Me</button>
+  ```
+
+- **Method 2**
+
+  ```html
+  <!-- the HTML file -->
+  <button id="btn">Click Me</button>
+  ```
+
+  ```javascript
+  // the JavaScript file
+  const btn = document.querySelector('#btn');
+  btn.onclick = () => alert("Hello World");
+  ```
+
+- **Method 3**
+
+  ```html
+  <!-- the HTML file -->
+  <button id="btn">Click Me Too</button>
+  ```
+
+  ```javascript
+  // the JavaScript file
+  const btn = document.querySelector('#btn');
+  btn.addEventListener('click', () => {
+    alert("Hello World");
+  });
+  ```
+
+**Attaching listeners to groups of nodes**
+
+```html
+<div id="container">
+    <button id="1">Click Me</button>
+    <button id="2">Click Me</button>
+    <button id="3">Click Me</button>
+</div>
+```
+
+```javascript
+// buttons is a node list. It looks and acts much like an array.
+const buttons = document.querySelectorAll('button');
+
+// we use the .forEach method to iterate through each button
+buttons.forEach((button) => {
+
+  // and for each one we add a 'click' listener
+  button.addEventListener('click', () => {
+    alert(button.id);
+  });
+});
+```
+
